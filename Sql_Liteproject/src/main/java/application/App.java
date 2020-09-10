@@ -13,17 +13,17 @@ public class App {
 		String[] names = {"sue" , "bob" , "charlie"};
 		
 		
-		Class.forName("org.sqlite.JDBC");
-		String dbUrl = "jdbc:sqlite:people.db";
-		Connection conn = DriverManager.getConnection(dbUrl);
+		//Class.forName("org.sqlite.JDBC");
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		String dbUrl = "jdbc:mysql://localhost:3306/people";
+		Connection conn = DriverManager.getConnection(dbUrl , "root" , "e386c34b");
 		
 		Statement stmt = conn.createStatement();
 		
 		conn.setAutoCommit(false);
-		var sql = "create table if not exists user (id integer primary key , name text not null)";
-		stmt.execute(sql);
-		
-		sql = "insert into user (id , name) values (? , ?)";
+				
+		var sql = "insert into user (id , name) values (? , ?)";
 		
 		var insertStmnt = conn.prepareStatement(sql);
 		for(int i=0 ; i<ids.length ; i++) {
@@ -44,9 +44,7 @@ public class App {
 			System.out.println(id + " " + name);
 		}
 		
-		sql = "drop table user";
-		//stmt.execute(sql);
-		stmt.close();
+				stmt.close();
 		
 		conn.close();
 

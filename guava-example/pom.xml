@@ -11,6 +11,6 @@
 		<groupId>com.learning.example</groupId>
 		<artifactId>example-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>..</relativePath>
+		<relativePath>E:\LearningMavenGradel</relativePath>
 	</parent>
 </project>
